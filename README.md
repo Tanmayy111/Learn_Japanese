@@ -59,19 +59,6 @@ A beautifully designed, interactive Japanese learning guide built in pure HTML, 
 
 ---
 
-## 🚀 Getting Started
-
-### Option 1 — Open locally
-Just download `index.html` and open it in any browser. That's it.
-
-### Option 2 — Deploy on GitHub Pages
-1. Fork or clone this repository
-2. Go to **Settings → Pages**
-3. Set branch to `main`, folder to `/root`
-4. Save — your site will be live at `https://yourusername.github.io/repo-name`
-
----
-
 ## 📚 Featured Resources
 
 | Resource | Type | Link |
