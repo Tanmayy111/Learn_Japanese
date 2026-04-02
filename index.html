@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Japanese — Complete Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* ─── THEME TOKENS ─── */
+  [data-theme="light"] {
+    --ink: #1a1014;
+    --paper: #faf7f2;
+    --surface: #fff;
+    --soft: #e8e0d4;
+    --muted: #8a7f75;
+    --phases-bg: #fff;
+    --goal-bg: var(--paper);
+    --tip-border: var(--soft);
+    --tip-shadow: rgba(0,0,0,0.08);
+    --table-alt: rgba(192,57,43,0.04);
+    --table-border: var(--soft);
+    --jlpt-bg: #fff;
+    --nav-bg: rgba(26,16,20,0.92);
+    --section-title-color: var(--ink);
+  }
+
+  [data-theme="dark"] {
+    --ink: #f0ebe4;
+    --paper: #141010;
+    --surface: #1e1818;
+    --soft: #2e2828;
+    --muted: #7a7068;
+    --phases-bg: #1a1515;
+    --goal-bg: #1e1818;
+    --tip-border: #2e2828;
+    --tip-shadow: rgba(0,0,0,0.4);
+    --table-alt: rgba(192,57,43,0.08);
+    --table-border: #2e2828;
+    --jlpt-bg: #1a1515;
+    --nav-bg: rgba(14,10,10,0.95);
+    --section-title-color: #f0ebe4;
+  }
+
+  :root {
+    --red: #c0392b;
+    --gold: #c9963a;
+    --green: #2e7d5e;
+    --blue: #2c5f8a;
+    --purple: #6b3fa0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ─── DARK MODE TOGGLE ─── */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 5px 14px 5px 6px;
+    transition: background 0.2s;
+  }
+
+  .theme-toggle:hover { background: rgba(255,255,255,0.14); }
+
+  .toggle-track {
+    width: 32px;
+    height: 18px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 9px;
+    position: relative;
+    transition: background 0.3s;
+    flex-shrink: 0;
+  }
+
+  [data-theme="dark"] .toggle-track { background: var(--gold); }
+
+  .toggle-thumb {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  [data-theme="dark"] .toggle-thumb { transform: translateX(14px); }
+
+  .toggle-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-brand {
+    font-family: 'Shippori Mincho', serif;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  @media (max-width: 680px) { .nav-links { display: none; } }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    background: #1a1014;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '日本語';
+    position: absolute;
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(160px, 30vw, 380px);
+    color: rgba(255,255,255,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,150,58,0.6);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(44px, 8vw, 96px);
+    color: #fff;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    animation: fadeUp 0.9s ease 0.1s both;
+  }
+
+  .hero h1 span { color: var(--red); }
+
+  .hero p {
+    max-width: 540px;
+    color: rgba(255,255,255,0.55);
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    animation: fadeUp 1.1s ease 0.3s both;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 36px;
+    color: var(--gold);
+    font-weight: 600;
+    display: block;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bob 2s ease-in-out infinite;
+  }
+
+  /* ─── SECTIONS ─── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 48px;
+    color: var(--section-title-color);
+  }
+
+  /* ─── WRITING SYSTEMS ─── */
+  .writing-wrap { background: var(--paper); transition: background 0.3s; }
+
+  .writing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 720px) { .writing-grid { grid-template-columns: 1fr; } }
+
+  .writing-card {
+    background: #1a1014;
+    color: #fff;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.3s ease;
+  }
+
+  .writing-card:hover { transform: translateY(-4px); z-index: 1; }
+
+  .writing-card::before {
+    content: attr(data-glyph);
+    position: absolute;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 120px;
+    bottom: -20px; right: 8px;
+    opacity: 0.08;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .writing-card:nth-child(1) { border-top: 3px solid var(--red); }
+  .writing-card:nth-child(2) { border-top: 3px solid var(--gold); }
+  .writing-card:nth-child(3) { border-top: 3px solid var(--blue); }
+
+  .wc-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; margin-bottom: 8px; }
+  .wc-title { font-family: 'Shippori Mincho', serif; font-size: 28px; font-weight: 600; margin-bottom: 12px; }
+  .wc-sub { font-size: 13px; opacity: 0.5; margin-bottom: 20px; font-weight: 300; }
+  .wc-desc { font-size: 14px; opacity: 0.75; line-height: 1.7; }
+
+  .wc-time {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .writing-card:nth-child(1) .wc-time { background: rgba(192,57,43,0.2); color: #e07060; }
+  .writing-card:nth-child(2) .wc-time { background: rgba(201,150,58,0.2); color: #d4a040; }
+  .writing-card:nth-child(3) .wc-time { background: rgba(44,95,138,0.2); color: #5a9fd4; }
+
+  /* ─── ROADMAP PHASES ─── */
+  .phases-wrap { background: var(--phases-bg); transition: background 0.3s; }
+
+  .phase {
+    border-bottom: 1px solid var(--soft);
+    padding: 0;
+    transition: background 0.2s, border-color 0.3s;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 36px 24px;
+    cursor: pointer;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .phase-num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--soft);
+    min-width: 64px;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .phase.open .phase-num { color: var(--red); }
+
+  .phase-meta { flex: 1; }
+
+  .phase-tag {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .phase-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    transition: color 0.3s;
+  }
+
+  .phase-time { font-size: 13px; color: var(--muted); }
+
+  /* Phase completion indicator in header */
+  .phase-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    margin-right: 4px;
+  }
+
+  .phase-check-count {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .phase-progress-bar {
+    width: 48px;
+    height: 3px;
+    background: var(--soft);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .phase-progress-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .phase-toggle {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    color: var(--ink);
+  }
+
+  .phase.open .phase-toggle {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+
+  .phase-toggle svg { transition: transform 0.3s; }
+  .phase.open .phase-toggle svg { transform: rotate(45deg); }
+
+  .phase-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .phase.open .phase-body { max-height: 2000px; }
+
+  .phase-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 40px 112px;
+  }
+
+  @media (max-width: 600px) { .phase-content { padding: 0 24px 40px 24px; } }
+
+  /* ─── GOAL CHECKBOXES ─── */
+  .goal-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .goal {
+    background: var(--goal-bg);
+    border-left: 3px solid var(--soft);
+    padding: 12px 16px 12px 12px;
+    font-size: 14px;
+    border-radius: 0 4px 4px 0;
+    transition: border-color 0.2s, background 0.3s;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .goal:hover { border-color: var(--red); }
+
+  .goal.checked {
+    border-color: var(--green);
+    opacity: 0.7;
+  }
+
+  .goal.checked strong { text-decoration: line-through; }
+
+  /* Custom checkbox */
+  .goal-checkbox {
+    width: 17px;
+    height: 17px;
+    border: 2px solid var(--soft);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+  }
+
+  .goal.checked .goal-checkbox {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .goal-checkbox svg {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  .goal.checked .goal-checkbox svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .goal-text { flex: 1; }
+  .goal strong { display: block; font-weight: 600; margin-bottom: 2px; color: var(--ink); transition: color 0.3s; }
+  .goal span { color: var(--muted); font-size: 12px; }
+
+  /* ─── RESOURCE CHIPS (in phase) — light bordered tag style ─── */
+  .resource-row { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--soft); }
+
+  .resource-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .resource-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--soft);
+    background: var(--surface);
+    color: var(--ink);
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .chip:hover {
+    border-color: var(--ink);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+  }
+
+  /* Kanji badge inside chip */
+  .chip-kj {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .chip:hover .chip-kj { color: var(--red); }
+
+  /* Type accent stripe */
+  .chip-free  { border-left: 3px solid var(--green); }
+  .chip-free .chip-kj  { color: var(--green); }
+  .chip-paid  { border-left: 3px solid var(--purple); }
+  .chip-paid .chip-kj  { color: var(--purple); }
+  .chip-book  { border-left: 3px solid var(--blue); }
+  .chip-book .chip-kj  { color: var(--blue); }
+  .chip-app   { border-left: 3px solid var(--red); }
+  .chip-app .chip-kj   { color: var(--red); }
+  .chip-yt    { border-left: 3px solid var(--gold); }
+  .chip-yt .chip-kj    { color: var(--gold); }
+
+  /* ─── RESOURCES SECTION ─── */
+  .res-section {
+    background: #1a1014;
+    transition: background 0.3s;
+  }
+  .res-section .section-title { color: #fff; }
+  .res-section .section-label { color: rgba(255,255,255,0.4); }
+
+  /* Light mode overrides */
+  [data-theme="light"] .res-section {
+    background: var(--paper);
+  }
+  [data-theme="light"] .res-section .section-title { color: var(--ink); }
+  [data-theme="light"] .res-section .section-label { color: var(--muted); }
+
+  .res-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+  }
+
+  .res-card {
+    background: rgba(255,255,255,0.04);
+    padding: 28px 24px;
+    border-top: 2px solid rgba(255,255,255,0.08);
+    transition: background 0.3s, transform 0.2s, border-color 0.3s;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .res-card:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Light mode card */
+  [data-theme="light"] .res-card {
+    background: var(--surface);
+    border-top: 2px solid var(--soft);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  [data-theme="light"] .res-card:hover {
+    background: #fff;
+    border-top-color: var(--red);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+  }
+
+  .res-card-link-icon {
+    position: absolute;
+    top: 20px; right: 20px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+  }
+
+  [data-theme="light"] .res-card-link-icon { color: var(--muted); }
+
+  .res-card:hover .res-card-link-icon { opacity: 1; }
+
+  /* Kanji icon badge for resource cards */
+  .res-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.04);
+    transition: all 0.3s;
+    line-height: 1;
+  }
+
+  [data-theme="light"] .res-icon {
+    border: 1px solid var(--soft);
+    color: var(--red);
+    background: rgba(192,57,43,0.05);
+  }
+
+  .res-card:hover .res-icon {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,150,58,0.08);
+  }
+
+  [data-theme="light"] .res-card:hover .res-icon {
+    border-color: var(--red);
+    color: #fff;
+    background: var(--red);
+  }
+
+  .res-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 6px;
+    transition: color 0.3s;
+  }
+
+  [data-theme="light"] .res-name { color: var(--ink); }
+
+  .res-type {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+  }
+
+  .res-type.free     { color: #5ad4a0; }
+  .res-type.freemium { color: var(--gold); }
+  .res-type.paid     { color: #b09fe0; }
+
+  [data-theme="light"] .res-type.free     { color: var(--green); }
+  [data-theme="light"] .res-type.freemium { color: var(--gold); }
+  [data-theme="light"] .res-type.paid     { color: var(--purple); }
+
+  .res-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    transition: color 0.3s;
+  }
+
+  [data-theme="light"] .res-desc { color: var(--muted); }
+
+  /* ─── TIPS ─── */
+  .tips-wrap { background: var(--paper); transition: background 0.3s; }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .tip-card {
+    border: 1px solid var(--tip-border);
+    padding: 28px 24px;
+    border-radius: 4px;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.3s;
+    background: var(--surface);
+  }
+
+  .tip-card:hover {
+    box-shadow: 0 8px 32px var(--tip-shadow);
+    transform: translateY(-2px);
+  }
+
+  /* Kanji icon badge for tip cards */
+  .tip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--soft);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--red);
+    background: rgba(192,57,43,0.04);
+    line-height: 1;
+    transition: all 0.2s;
+  }
+
+  .tip-card:hover .tip-icon {
+    background: rgba(192,57,43,0.08);
+    border-color: rgba(192,57,43,0.3);
+  }
+
+  .tip-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--ink);
+    transition: color 0.3s;
+  }
+
+  .tip-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* ─── JLPT TABLE ─── */
+  .jlpt-wrap { background: var(--jlpt-bg); border-top: 1px solid var(--soft); transition: background 0.3s, border-color 0.3s; }
+
+  .jlpt-wrap table th { color: var(--ink); }
+  .jlpt-wrap table td { color: var(--ink); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: #1a1014;
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 48px 24px;
+    font-size: 13px;
+  }
+
+  .footer-kana {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 48px;
+    color: rgba(255,255,255,0.1);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--soft), transparent);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ─── HAMBURGER BUTTON ─── */
+  .hamburger {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    transition: background 0.2s;
+    flex-shrink: 0;
+    margin-right: 12px;
+  }
+
+  .hamburger:hover { background: rgba(255,255,255,0.12); }
+
+  .hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── DRAWER OVERLAY ─── */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 199;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    backdrop-filter: blur(2px);
+  }
+
+  .drawer-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ─── DRAWER ─── */
+  .drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85vw;
+    z-index: 200;
+    background: #1a1014;
+    transform: translateX(-100%);
+    transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .drawer.open { transform: translateX(0); }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+
+  .drawer-brand {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  .drawer-close {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    transition: all 0.2s;
+    background: none;
+  }
+
+  .drawer-close:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+
+  .drawer-section-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    padding: 20px 24px 8px;
+  }
+
+  .drawer-nav {
+    list-style: none;
+    padding: 0 12px;
+  }
+
+  .drawer-nav li { margin-bottom: 2px; }
+
+  .drawer-nav a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .drawer-nav a:hover {
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+  }
+
+  .drawer-nav a .nav-icon {
+    font-size: 18px;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .drawer-nav a .nav-text { flex: 1; }
+
+  .drawer-nav a .nav-sub {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 400;
+    display: block;
+    margin-top: 1px;
+  }
+
+  .drawer-nav a .nav-arrow {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .drawer-nav a:hover .nav-arrow {
+    transform: translateX(3px);
+    color: var(--gold);
+  }
+
+  .drawer-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 12px 24px;
+  }
+
+  .drawer-phase-links {
+    list-style: none;
+    padding: 0 12px;
+  }
+
+  .drawer-phase-links li { margin-bottom: 2px; }
+
+  .drawer-phase-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+
+  .drawer-phase-links a:hover {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.85);
+  }
+
+  .phase-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .drawer-phase-links a:hover .phase-dot {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .drawer-footer {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    flex-shrink: 0;
+  }
+
+  .drawer-footer-text {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- SLIDE-OUT DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <span class="drawer-brand">日本語</span>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+
+  <div class="drawer-section-label">Navigation</div>
+  <ul class="drawer-nav">
+    <li>
+      <a href="#" onclick="closeDrawer()">
+        <span class="nav-icon" style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--gold);">頂</span>
+        <span class="nav-text">Top<span class="nav-sub">Hero &amp; overview</span></span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </li>
+    <li>
+      <a href="#writing" onclick="closeDrawer()">
+        <span class="nav-icon" style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--gold);">字</span>
+        <span class="nav-text">Writing Systems<span class="nav-sub">Hiragana · Katakana · Kanji</span></span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </li>
+    <li>
+      <a href="#roadmap" onclick="closeDrawer()">
+        <span class="nav-icon" style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--gold);">道</span>
+        <span class="nav-text">Roadmap<span class="nav-sub">4 phases to fluency</span></span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </li>
+    <li>
+      <a href="#resources" onclick="closeDrawer()">
+        <span class="nav-icon" style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--gold);">具</span>
+        <span class="nav-text">Resources<span class="nav-sub">All tools &amp; materials</span></span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </li>
+    <li>
+      <a href="#tips" onclick="closeDrawer()">
+        <span class="nav-icon" style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--gold);">知</span>
+        <span class="nav-text">Study Tips<span class="nav-sub">Strategies that work</span></span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </li>
+    <li>
+      <a href="#jlpt" onclick="closeDrawer()">
+        <span class="nav-icon" style="font-family:'Shippori Mincho',serif;font-size:16px;font-weight:700;color:var(--gold);">級</span>
+        <span class="nav-text">JLPT Levels<span class="nav-sub">Certification guide</span></span>
+        <span class="nav-arrow">›</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="drawer-divider"></div>
+  <div class="drawer-section-label">Roadmap Phases</div>
+  <ul class="drawer-phase-links">
+    <li>
+      <a href="#p1" onclick="openPhaseAndClose('p1')">
+        <span class="phase-dot">01</span>
+        Foundations <span style="margin-left:auto; font-size:11px; color:rgba(255,255,255,0.25);">N5 · Month 1–3</span>
+      </a>
+    </li>
+    <li>
+      <a href="#p2" onclick="openPhaseAndClose('p2')">
+        <span class="phase-dot">02</span>
+        Building Blocks <span style="margin-left:auto; font-size:11px; color:rgba(255,255,255,0.25);">N4 · Month 4–9</span>
+      </a>
+    </li>
+    <li>
+      <a href="#p3" onclick="openPhaseAndClose('p3')">
+        <span class="phase-dot">03</span>
+        Immersion Era <span style="margin-left:auto; font-size:11px; color:rgba(255,255,255,0.25);">N3 · Month 10–18</span>
+      </a>
+    </li>
+    <li>
+      <a href="#p4" onclick="openPhaseAndClose('p4')">
+        <span class="phase-dot">04</span>
+        Native Content <span style="margin-left:auto; font-size:11px; color:rgba(255,255,255,0.25);">N2/N1 · Month 18+</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="drawer-footer">
+    <div class="drawer-footer-text">がんばって</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div style="display:flex; align-items:center; gap:0;">
+    <div class="hamburger" id="hamburger" onclick="toggleDrawer()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-brand">日本語</div>
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#tips">Tips</a></li>
+    </ul>
+    <!-- DARK MODE TOGGLE -->
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+      <span class="toggle-label" id="toggle-label">Dark</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  </div>
+
+  <div class="hero-badge">Complete Learning Guide</div>
+  <h1>Learn<br><span>Japanese</span></h1>
+  <p>A structured, no-fluff roadmap from absolute zero to conversational fluency — with the best free and paid resources.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">4</span>
+      <span class="stat-label">Phases</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">2–3</span>
+      <span class="stat-label">Years to fluency</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">20+</span>
+      <span class="stat-label">Resources</span>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ scroll</div>
+</section>
+
+<!-- WRITING SYSTEMS -->
+<div id="writing" class="writing-wrap">
+  </div>
+  <div class="section">
+    <div class="section-label">Step Zero</div>
+    <div class="section-title">Three Writing Systems<br>You Must Know</div>
+    <div class="writing-grid">
+
+      <div class="writing-card" data-glyph="あ">
+        <div class="wc-tag">Phonetic · 46 chars</div>
+        <div class="wc-title">Hiragana</div>
+        <div class="wc-sub">ひらがな</div>
+        <div class="wc-desc">The foundation of Japanese. Used for native words, grammatical particles, verb endings. Every beginner starts here. Soft, curved shapes.</div>
+        <span class="wc-time">1–2 weeks</span>
+      </div>
+
+      <div class="writing-card" data-glyph="ア">
+        <div class="wc-tag">Phonetic · 46 chars</div>
+        <div class="wc-title">Katakana</div>
+        <div class="wc-sub">カタカナ</div>
+        <div class="wc-desc">Used for foreign loanwords, technical terms, onomatopoeia, emphasis. Same sounds as Hiragana but angular shapes. Learn right after Hiragana.</div>
+        <span class="wc-time">1–2 weeks</span>
+      </div>
+
+      <div class="writing-card" data-glyph="漢">
+        <div class="wc-tag">Logographic · 2136 chars</div>
+        <div class="wc-title">Kanji</div>
+        <div class="wc-sub">漢字</div>
+        <div class="wc-desc">Chinese-origin characters representing meaning + sound. The Jōyō set has 2,136 characters. Learn gradually over months/years alongside vocabulary.</div>
+        <span class="wc-time">1–3 years</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div id="roadmap" class="phases-wrap">
+  </div>
+  <div class="section" style="padding-bottom: 0;">
+    <div class="section-label">The Roadmap</div>
+    <div class="section-title">4 Phases to Fluency</div>
+  </div>
+
+  <!-- Phase 1 -->
+  <div class="phase open" id="p1">
+    <div class="phase-header" onclick="togglePhase('p1')">
+      <div class="phase-num">01</div>
+      <div class="phase-meta">
+        <div class="phase-tag">Beginner — N5 Level</div>
+        <div class="phase-name">Foundations</div>
+        <div class="phase-time">Month 1–3 · 1–2 hrs/day</div>
+      </div>
+      <div class="phase-progress">
+        <span class="phase-check-count" id="p1-count">0 / 8</span>
+        <div class="phase-progress-bar"><div class="phase-progress-fill" id="p1-fill"></div></div>
+      </div>
+      <div class="phase-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+          <rect x="6" y="0" width="2" height="14" rx="1"/>
+          <rect x="0" y="6" width="14" height="2" rx="1"/>
+        </svg>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="goal-list" data-phase="p1">
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Hiragana</strong><span>All 46 + dakuten chars</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Katakana</strong><span>All 46 + dakuten chars</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Basic Grammar</strong><span>Particles: は, が, を, に, で</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>~500 Vocabulary</strong><span>Core everyday words</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Verb Conjugation</strong><span>Dictionary, masu, te-form</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>~100 Kanji</strong><span>Numbers, days, common nouns</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Pronunciation</strong><span>Pitch accent basics, long vowels</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Self-Introduction</strong><span>Basic self-intro in Japanese</span></div>
+          </div>
+        </div>
+        <div class="resource-row">
+          <div class="resource-label">Recommended Resources</div>
+          <div class="resource-chips">
+            <a href="https://www.duolingo.com/course/ja/en/Learn-Japanese" target="_blank" class="chip chip-app"><span class="chip-kj">練</span> Duolingo (warm-up only)</a>
+            <a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank" class="chip chip-free"><span class="chip-kj">平</span> Tofugu Hiragana Guide</a>
+            <a href="https://www.tofugu.com/japanese/learn-katakana/" target="_blank" class="chip chip-free"><span class="chip-kj">片</span> Tofugu Katakana Guide</a>
+            <a href="https://www.amazon.com/Genki-Integrated-Elementary-Japanese-English/dp/4789014401" target="_blank" class="chip chip-book"><span class="chip-kj">書</span> Genki I Textbook</a>
+            <a href="https://apps.ankiweb.net/" target="_blank" class="chip chip-app"><span class="chip-kj">記</span> Anki (SRS flashcards)</a>
+            <a href="https://www.youtube.com/@JapanesePod101" target="_blank" class="chip chip-yt"><span class="chip-kj">視</span> JapanesePod101 (YouTube)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="phase" id="p2">
+    <div class="phase-header" onclick="togglePhase('p2')">
+      <div class="phase-num">02</div>
+      <div class="phase-meta">
+        <div class="phase-tag">Elementary — N4 Level</div>
+        <div class="phase-name">Building Blocks</div>
+        <div class="phase-time">Month 4–9 · 1–2 hrs/day</div>
+      </div>
+      <div class="phase-progress">
+        <span class="phase-check-count" id="p2-count">0 / 8</span>
+        <div class="phase-progress-bar"><div class="phase-progress-fill" id="p2-fill"></div></div>
+      </div>
+      <div class="phase-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+          <rect x="6" y="0" width="2" height="14" rx="1"/>
+          <rect x="0" y="6" width="14" height="2" rx="1"/>
+        </svg>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="goal-list" data-phase="p2">
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>~1500 Vocabulary</strong><span>Anki Core 2k/6k deck</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>~300 Kanji</strong><span>RTK or WaniKani approach</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Intermediate Grammar</strong><span>て-form, conditional, passive</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Start Listening</strong><span>Slow Japanese podcasts</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Simple Reading</strong><span>NHK Web Easy articles</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Speaking Practice</strong><span>HelloTalk / iTalki tutor</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Shadowing</strong><span>Mimic native audio daily</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Keigo Basics</strong><span>Polite speech intro</span></div>
+          </div>
+        </div>
+        <div class="resource-row">
+          <div class="resource-label">Recommended Resources</div>
+          <div class="resource-chips">
+            <a href="https://www.amazon.com/Genki-Integrated-Elementary-Japanese-English/dp/4789014436" target="_blank" class="chip chip-book"><span class="chip-kj">書</span> Genki II Textbook</a>
+            <a href="https://www.wanikani.com/" target="_blank" class="chip chip-paid"><span class="chip-kj">漢</span> WaniKani (Kanji SRS)</a>
+            <a href="https://www3.nhk.or.jp/news/easy/" target="_blank" class="chip chip-free"><span class="chip-kj">読</span> NHK Web Easy</a>
+            <a href="https://www.hellotalk.com/" target="_blank" class="chip chip-app"><span class="chip-kj">話</span> HelloTalk</a>
+            <a href="https://www.italki.com/" target="_blank" class="chip chip-paid"><span class="chip-kj">師</span> iTalki Tutors</a>
+            <a href="https://www.youtube.com/@cijapanese" target="_blank" class="chip chip-yt"><span class="chip-kj">聴</span> Comprehensible Japanese</a>
+            <a href="https://apps.ankiweb.net/" target="_blank" class="chip chip-free"><span class="chip-kj">記</span> Anki Core 2k/6k Deck</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="phase" id="p3">
+    <div class="phase-header" onclick="togglePhase('p3')">
+      <div class="phase-num">03</div>
+      <div class="phase-meta">
+        <div class="phase-tag">Intermediate — N3 Level</div>
+        <div class="phase-name">Immersion Era</div>
+        <div class="phase-time">Month 10–18 · 2–3 hrs/day</div>
+      </div>
+      <div class="phase-progress">
+        <span class="phase-check-count" id="p3-count">0 / 8</span>
+        <div class="phase-progress-bar"><div class="phase-progress-fill" id="p3-fill"></div></div>
+      </div>
+      <div class="phase-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+          <rect x="6" y="0" width="2" height="14" rx="1"/>
+          <rect x="0" y="6" width="14" height="2" rx="1"/>
+        </svg>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="goal-list" data-phase="p3">
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>~3000 Vocabulary</strong><span>Mining from native content</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>~700 Kanji</strong><span>Continuous WaniKani/Anki</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Anime w/ JP subs</strong><span>Slice-of-life first</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Manga Reading</strong><span>Start with simple manga</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Regular Conversation</strong><span>Weekly iTalki sessions</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Grammar Reference</strong><span>Dictionary of Japanese Grammar</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>JLPT N4/N3 Prep</strong><span>Mock tests</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Journaling</strong><span>Write a few lines daily</span></div>
+          </div>
+        </div>
+        <div class="resource-row">
+          <div class="resource-label">Recommended Resources</div>
+          <div class="resource-chips">
+            <a href="https://www.satorireader.com/" target="_blank" class="chip chip-paid"><span class="chip-kj">悟</span> Satori Reader</a>
+            <a href="https://jisho.org/" target="_blank" class="chip chip-free"><span class="chip-kj">辞</span> Jisho.org (dictionary)</a>
+            <a href="https://chrome.google.com/webstore/detail/yomitan/likgccmbimhjbgkjambclfkfhfnedold" target="_blank" class="chip chip-app"><span class="chip-kj">読</span> Yomichan (browser ext.)</a>
+            <a href="https://www.youtube.com/@Dogen" target="_blank" class="chip chip-yt"><span class="chip-kj">音</span> Dogen (pitch accent)</a>
+            <a href="https://jlptsensei.com/" target="_blank" class="chip chip-free"><span class="chip-kj">試</span> JLPT Sensei (mock tests)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phase 4 -->
+  <div class="phase" id="p4">
+    <div class="phase-header" onclick="togglePhase('p4')">
+      <div class="phase-num">04</div>
+      <div class="phase-meta">
+        <div class="phase-tag">Advanced — N2/N1 Level</div>
+        <div class="phase-name">Native Content</div>
+        <div class="phase-time">Month 18+ · Daily immersion</div>
+      </div>
+      <div class="phase-progress">
+        <span class="phase-check-count" id="p4-count">0 / 8</span>
+        <div class="phase-progress-bar"><div class="phase-progress-fill" id="p4-fill"></div></div>
+      </div>
+      <div class="phase-toggle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+          <rect x="6" y="0" width="2" height="14" rx="1"/>
+          <rect x="0" y="6" width="14" height="2" rx="1"/>
+        </svg>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-content">
+        <div class="goal-list" data-phase="p4">
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>5000+ Vocabulary</strong><span>Domain-specific words</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>2136 Kanji</strong><span>Full Jōyō set</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Read Novels</strong><span>Light novels → real novels</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Watch Raw Anime/TV</strong><span>No subtitles</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Japanese Twitter/Reddit</strong><span>5ch, Twitter JP</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Business Japanese</strong><span>Keigo, formal writing</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>JLPT N2 or N1</strong><span>Certification</span></div>
+          </div>
+          <div class="goal" onclick="toggleGoal(this)">
+            <div class="goal-checkbox"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><polyline points="1,3.5 3.5,6 8,1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="goal-text"><strong>Think in Japanese</strong><span>Internal monologue goal</span></div>
+          </div>
+        </div>
+        <div class="resource-row">
+          <div class="resource-label">Recommended Resources</div>
+          <div class="resource-chips">
+            <a href="https://www.satorireader.com/" target="_blank" class="chip chip-paid"><span class="chip-kj">悟</span> Satori Reader (advanced)</a>
+            <a href="https://www.aozora.gr.jp/" target="_blank" class="chip chip-free"><span class="chip-kj">文</span> Aozora Bunko (free books)</a>
+            <a href="https://www.languagereactor.com/" target="_blank" class="chip chip-app"><span class="chip-kj">映</span> Language Reactor (Netflix)</a>
+            <a href="https://jreadability.net/" target="_blank" class="chip chip-free"><span class="chip-kj">測</span> JReadability.net</a>
+            <a href="https://www.youtube.com/@nihongonomori" target="_blank" class="chip chip-yt"><span class="chip-kj">森</span> Nihongo no Mori (JLPT)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height: 48px;"></div>
+</div>
+
+<!-- RESOURCES -->
+<div id="resources" class="res-section">
+  </div>
+  <div class="section">
+    <div class="section-label">All Resources</div>
+    <div class="section-title">The Best Tools &amp; Materials</div>
+
+    <div class="res-grid">
+
+      <a href="https://www.amazon.com/s?k=Genki+Japanese+Textbook" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">書</div>
+        <div class="res-name">Genki I &amp; II</div>
+        <div class="res-type paid">Paid · ~₹2500 each</div>
+        <div class="res-desc">The gold standard university textbook series. Structured, clear grammar explanations, workbook exercises. Best starting point.</div>
+      </a>
+
+      <a href="https://apps.ankiweb.net/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">記</div>
+        <div class="res-name">Anki</div>
+        <div class="res-type free">Free</div>
+        <div class="res-desc">Spaced Repetition System flashcard app. Download the Core 2k/6k vocabulary deck. Non-negotiable for vocabulary retention.</div>
+      </a>
+
+      <a href="https://www.wanikani.com/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">漢</div>
+        <div class="res-name">WaniKani</div>
+        <div class="res-type freemium">Freemium · $9/mo</div>
+        <div class="res-desc">Structured Kanji + vocab SRS. Teaches radicals → kanji → vocabulary progressively. Free up to level 3. Very effective for Kanji.</div>
+      </a>
+
+      <a href="https://jisho.org/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">辞</div>
+        <div class="res-name">Jisho.org</div>
+        <div class="res-type free">Free</div>
+        <div class="res-desc">The best Japanese-English dictionary online. Search by word, kanji, reading, or draw kanji. Use this every single day.</div>
+      </a>
+
+      <a href="https://www.youtube.com/@cijapanese" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">聴</div>
+        <div class="res-name">Comprehensible Japanese</div>
+        <div class="res-type free">Free · YouTube</div>
+        <div class="res-desc">Input-focused YouTube channel. Videos at beginner, elementary, intermediate levels. Best immersion resource for early learners.</div>
+      </a>
+
+      <a href="https://www.italki.com/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">師</div>
+        <div class="res-name">iTalki</div>
+        <div class="res-type freemium">Freemium · ~$10–20/hr</div>
+        <div class="res-desc">Find professional Japanese tutors or community partners. Even 1 session/week dramatically improves speaking. Essential for output practice.</div>
+      </a>
+
+      <a href="https://www3.nhk.or.jp/news/easy/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">読</div>
+        <div class="res-name">NHK Web Easy</div>
+        <div class="res-type free">Free</div>
+        <div class="res-desc">Real Japanese news rewritten in simple Japanese with furigana. Perfect for N4–N3 reading practice with real-world vocabulary.</div>
+      </a>
+
+      <a href="https://chrome.google.com/webstore/detail/yomitan/likgccmbimhjbgkjambclfkfhfnedold" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">読</div>
+        <div class="res-name">Yomichan / Yomitan</div>
+        <div class="res-type free">Free · Browser Ext.</div>
+        <div class="res-desc">Hover over any Japanese word online to get instant dictionary definitions + Anki export. Game-changer for reading native content.</div>
+      </a>
+
+      <a href="https://www.languagereactor.com/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">映</div>
+        <div class="res-name">Language Reactor</div>
+        <div class="res-type freemium">Freemium</div>
+        <div class="res-desc">Netflix extension that shows dual subtitles (JP + EN) with clickable dictionary lookup. Perfect for intermediate immersion.</div>
+      </a>
+
+      <a href="https://www.hellotalk.com/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">話</div>
+        <div class="res-name">HelloTalk</div>
+        <div class="res-type free">Free</div>
+        <div class="res-desc">Language exchange app. Chat with native Japanese speakers who want to learn your language. Great for casual text practice.</div>
+      </a>
+
+      <a href="https://www.satorireader.com/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">悟</div>
+        <div class="res-name">Satori Reader</div>
+        <div class="res-type paid">Paid · ~$9/mo</div>
+        <div class="res-desc">Graded Japanese reading stories with audio, grammar notes, and SRS. Excellent bridge between textbook and native content.</div>
+      </a>
+
+      <a href="https://www.tofugu.com/japanese/" target="_blank" class="res-card">
+        <span class="res-card-link-icon">↗</span>
+        <div class="res-icon">学</div>
+        <div class="res-name">Tofugu Blog</div>
+        <div class="res-type free">Free</div>
+        <div class="res-desc">The best guides for learning Hiragana and Katakana using mnemonics. Also has great articles on Japanese culture and study strategies.</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div id="tips" class="tips-wrap">
+  </div>
+  <div class="section">
+    <div class="section-label">Study Strategies</div>
+    <div class="section-title">Tips That Actually Matter</div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">継</div>
+        <div class="tip-title">Consistency Over Intensity</div>
+        <div class="tip-body">30 minutes daily beats 4 hours once a week. Language learning is about building neural pathways, which requires repeated small exposures over time.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">浸</div>
+        <div class="tip-title">Immersion from Day One</div>
+        <div class="tip-body">Start listening to Japanese immediately — even if you understand nothing. Your brain starts tuning into the sounds and rhythm of the language.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">復</div>
+        <div class="tip-title">Use SRS Religiously</div>
+        <div class="tip-body">Anki reviews take 10–15 minutes daily. Do them every single day without fail. Missing days causes exponential review pile-up.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">禁</div>
+        <div class="tip-title">Don't Use Romaji</div>
+        <div class="tip-body">Never use Romanized Japanese after the first week. It creates a crutch that slows your kana recognition for months. Learn hiragana fully first.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">興</div>
+        <div class="tip-title">Mine Your Interests</div>
+        <div class="tip-body">Learn vocabulary from anime, games, or topics you already love. Context-rich learning sticks 3x better than word lists. Find your genre.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">話</div>
+        <div class="tip-title">Speak Early, Speak Often</div>
+        <div class="tip-body">Many learners delay speaking for months. Start output practice at month 3–4, even if you make mistakes. Errors are essential feedback.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">時</div>
+        <div class="tip-title">Track Your Hours</div>
+        <div class="tip-body">JLPT N3 requires roughly 450–600 study hours. N2 needs 600–1000. Tracking hours keeps you honest about your actual progress.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">迷</div>
+        <div class="tip-title">Embrace Being Lost</div>
+        <div class="tip-body">When you read or listen and understand only 30%, that's fine. Comprehensible input theory says you learn best at i+1 — just above your level.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JLPT QUICK REF -->
+<div class="jlpt-wrap" id="jlpt">
+  </div>
+  <div class="section">
+    <div class="section-label">Certification</div>
+    <div class="section-title">JLPT Level Reference</div>
+    <div style="overflow-x: auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--ink);">
+            <th style="text-align:left; padding:12px 16px; font-family:'Shippori Mincho',serif; font-size:16px; color:var(--ink);">Level</th>
+            <th style="text-align:left; padding:12px 16px; font-weight:500; color:var(--ink);">Kanji</th>
+            <th style="text-align:left; padding:12px 16px; font-weight:500; color:var(--ink);">Vocabulary</th>
+            <th style="text-align:left; padding:12px 16px; font-weight:500; color:var(--ink);">Approx. Hours</th>
+            <th style="text-align:left; padding:12px 16px; font-weight:500; color:var(--ink);">Equivalent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--table-border); background:var(--table-alt);">
+            <td style="padding:12px 16px; font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700; color:var(--red);">N5</td>
+            <td style="padding:12px 16px; color:var(--ink);">~100</td>
+            <td style="padding:12px 16px; color:var(--ink);">~800</td>
+            <td style="padding:12px 16px; color:var(--ink);">150–250 hrs</td>
+            <td style="padding:12px 16px; color:var(--muted);">Basic survival</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--table-border);">
+            <td style="padding:12px 16px; font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700; color:var(--gold);">N4</td>
+            <td style="padding:12px 16px; color:var(--ink);">~300</td>
+            <td style="padding:12px 16px; color:var(--ink);">~1500</td>
+            <td style="padding:12px 16px; color:var(--ink);">300–600 hrs</td>
+            <td style="padding:12px 16px; color:var(--muted);">Daily conversations</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--table-border); background:var(--table-alt);">
+            <td style="padding:12px 16px; font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700; color:var(--green);">N3</td>
+            <td style="padding:12px 16px; color:var(--ink);">~650</td>
+            <td style="padding:12px 16px; color:var(--ink);">~3750</td>
+            <td style="padding:12px 16px; color:var(--ink);">450–900 hrs</td>
+            <td style="padding:12px 16px; color:var(--muted);">Functional fluency</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--table-border);">
+            <td style="padding:12px 16px; font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700; color:var(--blue);">N2</td>
+            <td style="padding:12px 16px; color:var(--ink);">~1000</td>
+            <td style="padding:12px 16px; color:var(--ink);">~6000</td>
+            <td style="padding:12px 16px; color:var(--ink);">600–1200 hrs</td>
+            <td style="padding:12px 16px; color:var(--muted);">Professional level</td>
+          </tr>
+          <tr>
+            <td style="padding:12px 16px; font-family:'Shippori Mincho',serif; font-size:18px; font-weight:700; color:var(--purple);">N1</td>
+            <td style="padding:12px 16px; color:var(--ink);">2136</td>
+            <td style="padding:12px 16px; color:var(--ink);">10,000+</td>
+            <td style="padding:12px 16px; color:var(--ink);">900–1800 hrs</td>
+            <td style="padding:12px 16px; color:var(--muted);">Near-native</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-kana">がんばって</span>
+  <p>がんばって — Do your best. Every kanji you learn is a step forward.</p>
+  <p style="margin-top:8px; font-size:11px; opacity:0.5;">Japanese Learning Roadmap · Built for absolute beginners</p>
+</footer>
+
+<script>
+  // ─── DRAWER ───
+  function toggleDrawer() {
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('drawerOverlay');
+    const hamburger = document.getElementById('hamburger');
+    const isOpen = drawer.classList.contains('open');
+    if (isOpen) {
+      closeDrawer();
+    } else {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      hamburger.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function openPhaseAndClose(phaseId) {
+    closeDrawer();
+    // Open the phase accordion
+    setTimeout(() => {
+      const el = document.getElementById(phaseId);
+      if (el && !el.classList.contains('open')) {
+        document.querySelectorAll('.phase').forEach(p => p.classList.remove('open'));
+        el.classList.add('open');
+      }
+    }, 350);
+  }
+
+  // Close drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+
+  // ─── DARK MODE ───
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('toggle-label').textContent = isDark ? 'Dark' : 'Light';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  }
+
+  // Restore saved theme
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      const lbl = document.getElementById('toggle-label');
+      if (lbl) lbl.textContent = 'Light';
+    }
+  })();
+
+  // ─── PHASE ACCORDION ───
+  function togglePhase(id) {
+    const el = document.getElementById(id);
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.phase').forEach(p => p.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  // ─── GOAL CHECKBOXES ───
+  function toggleGoal(goalEl) {
+    goalEl.classList.toggle('checked');
+    // Find parent phase
+    const list = goalEl.closest('.goal-list');
+    const phaseId = list.getAttribute('data-phase');
+    updatePhaseProgress(phaseId);
+    saveCheckedState();
+  }
+
+  function updatePhaseProgress(phaseId) {
+    const list = document.querySelector(`.goal-list[data-phase="${phaseId}"]`);
+    if (!list) return;
+    const all = list.querySelectorAll('.goal');
+    const checked = list.querySelectorAll('.goal.checked');
+    const total = all.length;
+    const done = checked.length;
+    const pct = total > 0 ? (done / total) * 100 : 0;
+
+    const countEl = document.getElementById(phaseId + '-count');
+    const fillEl = document.getElementById(phaseId + '-fill');
+    if (countEl) countEl.textContent = `${done} / ${total}`;
+    if (fillEl) fillEl.style.width = pct + '%';
+  }
+
+  function saveCheckedState() {
+    const state = {};
+    document.querySelectorAll('.goal-list').forEach(list => {
+      const phaseId = list.getAttribute('data-phase');
+      const goals = list.querySelectorAll('.goal');
+      state[phaseId] = Array.from(goals).map(g => g.classList.contains('checked'));
+    });
+    try { localStorage.setItem('jpGoals', JSON.stringify(state)); } catch(e) {}
+  }
+
+  function loadCheckedState() {
+    try {
+      const state = JSON.parse(localStorage.getItem('jpGoals') || '{}');
+      Object.keys(state).forEach(phaseId => {
+        const list = document.querySelector(`.goal-list[data-phase="${phaseId}"]`);
+        if (!list) return;
+        const goals = list.querySelectorAll('.goal');
+        state[phaseId].forEach((checked, i) => {
+          if (checked && goals[i]) goals[i].classList.add('checked');
+        });
+        updatePhaseProgress(phaseId);
+      });
+    } catch(e) {}
+  }
+
+  loadCheckedState();
+
+  // ─── ENTRANCE ANIMATIONS ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.res-card, .tip-card, .writing-card').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = `opacity 0.5s ease ${i * 0.04}s, transform 0.5s ease ${i * 0.04}s, background 0.2s`;
+    observer.observe(el);
+  });
+
+  // Fallback: ensure all cards are visible after 1.5s regardless
+  setTimeout(() => {
+    document.querySelectorAll('.res-card, .tip-card, .writing-card').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    });
+  }, 1500);
+</script>
+
+</body>
+</html>
